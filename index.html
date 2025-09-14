@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ada Restaurant Uzungöl — Ultra Luxe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --ada-ivory: #F7F4EF;
+            --ada-deep-navy: #0A1630;
+            --ada-brass: #B08D57;
+            --ada-sea-mist: #BFD3D6;
+            --ada-pine: #1E3A34;
+            --shadow-soft: 0 8px 28px rgba(10, 22, 48, 0.10);
+            --shadow-crisp: 0 1px 0 rgba(10, 22, 48, 0.12);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+            background: var(--ada-deep-navy);
+            color: var(--ada-ivory);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            overflow-x: hidden;
+        }
+
+        /* Film Grain */
+        body::after {
+            content: "";
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            right: -50%;
+            bottom: -50%;
+            width: 200%;
+            height: 200%;
+            background: transparent;
+            opacity: 0.04;
+            z-index: 1;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.8'/%3E%3C/svg%3E");
+            animation: grain 8s steps(10) infinite;
+        }
+
+        @keyframes grain {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-5%, -10%); }
+            30% { transform: translate(7%, -25%); }
+            50% { transform: translate(-15%, 10%); }
+            70% { transform: translate(0%, 15%); }
+            90% { transform: translate(-10%, 10%); }
+        }
+
+        /* Glassy Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 22, 48, 0.92);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(176, 141, 87, 0.3);
+            z-index: 100;
+            padding: 1.5rem 2rem;
+            transition: all 0.4s cubic-bezier(0.2, 0, 0, 1);
+        }
+
+        .header.scrolled {
+            background: rgba(10, 22, 48, 0.98);
+            border-bottom-color: rgba(176, 141, 87, 0.5);
+            box-shadow: 0 4px 30px rgba(10, 22, 48, 0.2);
+            padding: 1rem 2rem;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--ada-brass);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+            transition: opacity 0.3s;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            color: var(--ada-ivory);
+            text-decoration: none;
+            font-size: 0.875rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                var(--ada-brass) 20%,
+                rgba(176, 141, 87, 0.4) 50%,
+                var(--ada-brass) 80%,
+                transparent 100%);
+            transition: width 0.3s cubic-bezier(0.2, 0, 0, 1);
+        }
+
+        .nav-links a:hover {
+            color: var(--ada-brass);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--ada-deep-navy) 0%, var(--ada-pine) 100%);
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, transparent 0%, transparent 40%, rgba(10, 22, 48, 0.25) 100%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAACAAIDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCmAA8A/9k=');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            transform: scale(1.1);
+            transition: transform 10s ease-out;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 1000px;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s cubic-bezier(0.2, 0, 0, 1) 0.2s forwards;
+        }
+
+        .hero .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+            color: rgba(247, 244, 239, 0.9);
+            margin-bottom: 3rem;
+            letter-spacing: 0.02em;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s cubic-bezier(0.2, 0, 0, 1) 0.4s forwards;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s cubic-bezier(0.2, 0, 0, 1) 0.6s forwards;
+        }
+
+        .btn {
+            position: relative;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+            display: inline-block;
+        }
+
+        .btn-primary {
+            border: 1px solid var(--ada-brass);
+            color: var(--ada-ivory);
+            background: transparent;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: var(--ada-brass);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-primary:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(176, 141, 87, 0.2);
+        }
+
+        .btn-primary:hover span {
+            color: var(--ada-deep-navy);
+        }
+
+        .btn-secondary {
+            border: 1px solid rgba(191, 211, 214, 0.5);
+            color: var(--ada-ivory);
+            background: transparent;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(191, 211, 214, 0.1);
+            border-color: var(--ada-sea-mist);
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: float 2s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        .scroll-indicator svg {
+            width: 24px;
+            height: 24px;
+            color: rgba(247, 244, 239, 0.5);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        /* Highlights Section */
+        .highlights-section {
+            padding: 6rem 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .highlight {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s cubic-bezier(0.2, 0, 0, 1) forwards;
+        }
+
+        .highlight:nth-child(1) { animation-delay: 0.2s; }
+        .highlight:nth-child(2) { animation-delay: 0.3s; }
+        .highlight:nth-child(3) { animation-delay: 0.4s; }
+
+        .highlight-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(176, 141, 87, 0.3);
+            border-radius: 50%;
+            color: var(--ada-brass);
+            transition: all 0.3s;
+        }
+
+        .highlight:hover .highlight-icon {
+            background: rgba(176, 141, 87, 0.05);
+            border-color: var(--ada-brass);
+            transform: translateY(-5px);
+        }
+
+        .highlight h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: var(--ada-ivory);
+            letter-spacing: -0.01em;
+        }
+
+        .highlight p {
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            color: rgba(247, 244, 239, 0.7);
+            line-height: 1.8;
+            letter-spacing: 0.02em;
+        }
+
+        /* Signature Section */
+        .signature-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, transparent 0%, rgba(30, 58, 52, 0.1) 100%);
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            text-align: center;
+            color: var(--ada-brass);
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: rgba(247, 244, 239, 0.7);
+            max-width: 700px;
+            margin: 0 auto 4rem;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+
+        /* Premium Card */
+        .dish-card {
+            position: relative;
+            background: rgba(10, 22, 48, 0.5);
+            border: 1px solid rgba(176, 141, 87, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.2, 0, 0, 1);
+            overflow: hidden;
+        }
+
+        .dish-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(176, 141, 87, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .dish-card:hover {
+            transform: translateY(-8px);
+            box-shadow:
+                0 30px 60px rgba(10, 22, 48, 0.15),
+                0 0 0 1px rgba(176, 141, 87, 0.3);
+        }
+
+        .dish-card:hover::before {
+            opacity: 1;
+        }
+
+        .dish-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--ada-brass);
+            margin-bottom: 0.5rem;
+        }
+
+        .dish-card p {
+            color: rgba(247, 244, 239, 0.7);
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2rem; }
+            .hero .subtitle { font-size: 1rem; }
+            .buttons { flex-direction: column; align-items: center; }
+            .btn { width: 250px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header" id="header">
+        <nav class="nav">
+            <a href="#" class="logo">Ada</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#reservations">Reservations</a></li>
+                <li><a href="#location">Location</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>Lakefront dining in the heart of Uzungöl</h1>
+            <p class="subtitle">Local Black Sea flavors meet timeless hospitality on the water's edge</p>
+            <div class="buttons">
+                <a href="tel:+904626566255" class="btn btn-primary">
+                    <span>Reserve a Table</span>
+                </a>
+                <a href="#menu" class="btn btn-secondary">
+                    <span>View Menu</span>
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+        </div>
+    </section>
+
+    <section class="highlights-section">
+        <div class="container">
+            <div class="highlights">
+                <div class="highlight">
+                    <div class="highlight-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3>From Shore to Grill</h3>
+                    <p>Fresh local produce and regional specialties prepared with meticulous care and traditional techniques passed down through generations.</p>
+                </div>
+                <div class="highlight">
+                    <div class="highlight-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                    </div>
+                    <h3>Terrace with a View</h3>
+                    <p>An exquisite open-air setting overlooking the pristine waters of Uzungöl lake and the majestic pine forests beyond.</p>
+                </div>
+                <div class="highlight">
+                    <div class="highlight-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </div>
+                    <h3>For Families & Friends</h3>
+                    <p>Spacious, thoughtfully arranged seating with exclusive options for intimate gatherings and grand celebrations alike.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="signature-section">
+        <div class="container">
+            <h2 class="section-title">Signature Dishes</h2>
+            <p class="section-subtitle">A curated selection of our most celebrated creations, each a testament to Black Sea culinary artistry</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                <div class="dish-card">
+                    <h4>Kuymak</h4>
+                    <p>Traditional Black Sea cheese fondue with stone-ground cornmeal, finished with local butter</p>
+                </div>
+                <div class="dish-card">
+                    <h4>Grilled Trout</h4>
+                    <p>Line-caught from Uzungöl waters, oak-grilled with mountain herbs</p>
+                </div>
+                <div class="dish-card">
+                    <h4>Kabsa</h4>
+                    <p>Aromatic saffron rice with tender lamb, slow-cooked with cardamom and rose water</p>
+                </div>
+                <div class="dish-card">
+                    <h4>Künefe</h4>
+                    <p>Crispy kadayıf threads embracing molten cheese, crowned with pistachios</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroBg = document.querySelector('.hero-bg');
+            if (heroBg) {
+                heroBg.style.transform = `scale(1.1) translateY(${scrolled * 0.3}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
