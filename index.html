@@ -15,12 +15,15 @@
             --ada-ivory: #F7F4EF;
             --ada-deep-navy: #0A1630;
             --ada-brass: #B08D57;
+            --ada-gold: #D4AF37;
+            --ada-champagne: #F7E7CE;
             --ada-sea-mist: #BFD3D6;
             --ada-pine: #1E3A34;
             --ada-brass-light: #D4B896;
             --shadow-soft: 0 8px 28px rgba(10, 22, 48, 0.10);
             --shadow-crisp: 0 1px 0 rgba(10, 22, 48, 0.12);
             --shadow-luxury: 0 20px 60px rgba(10, 22, 48, 0.15);
+            --shadow-gold: 0 20px 40px rgba(212, 175, 55, 0.2);
             --cubic-smooth: cubic-bezier(0.2, 0, 0, 1);
         }
 
@@ -40,6 +43,57 @@
             text-rendering: optimizeLegibility;
             overflow-x: hidden;
         }
+
+        /* Luxury Particles Animation */
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .luxury-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            display: block;
+            width: 3px;
+            height: 3px;
+            background: radial-gradient(circle, var(--ada-gold) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: floatUp 15s infinite;
+            opacity: 0;
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 20s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 2s; animation-duration: 25s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 4s; animation-duration: 18s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 0s; animation-duration: 22s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 3s; animation-duration: 20s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 5s; animation-duration: 16s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 1s; animation-duration: 24s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 6s; animation-duration: 19s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 2s; animation-duration: 21s; }
+        .particle:nth-child(10) { left: 85%; animation-delay: 4s; animation-duration: 23s; }
 
         /* Film Grain Overlay */
         body::after {
@@ -164,8 +218,23 @@
         }
 
         @keyframes shimmer {
-            0%, 100% { opacity: 0.7; }
-            50% { opacity: 1; }
+            0% {
+                opacity: 0.7;
+                background-position: -200% center;
+            }
+            100% {
+                opacity: 1;
+                background-position: 200% center;
+            }
+        }
+
+        @keyframes goldPulse {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(212, 175, 55, 0.5), 0 0 60px rgba(212, 175, 55, 0.2);
+            }
         }
 
         .nav-links a:hover {
@@ -227,7 +296,7 @@
             opacity: 0;
             transform: translateY(30px);
             animation: fadeUp 0.8s var(--cubic-smooth) 0.2s forwards;
-            background: linear-gradient(135deg, var(--ada-ivory) 0%, var(--ada-brass-light) 100%);
+            background: linear-gradient(135deg, var(--ada-champagne) 0%, var(--ada-gold) 50%, var(--ada-brass-light) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -303,7 +372,8 @@
 
         .btn-primary:hover {
             transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 10px 30px rgba(176, 141, 87, 0.3);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4), 0 0 60px rgba(212, 175, 55, 0.2);
+            animation: goldPulse 2s infinite;
         }
 
         .btn-primary:hover span {
@@ -379,13 +449,15 @@
             left: 50%;
             transform: translateX(-50%);
             width: 100px;
-            height: 1px;
+            height: 2px;
             background: linear-gradient(90deg,
                 transparent 0%,
-                var(--ada-brass) 20%,
-                var(--ada-brass-light) 50%,
-                var(--ada-brass) 80%,
+                var(--ada-gold) 20%,
+                var(--ada-champagne) 50%,
+                var(--ada-gold) 80%,
                 transparent 100%);
+            animation: shimmer 3s linear infinite;
+            background-size: 200% auto;
         }
 
         .section-subtitle {
@@ -445,6 +517,7 @@
         .menu-tab.active::before {
             width: 200%;
             height: 200%;
+            background: linear-gradient(135deg, var(--ada-brass) 0%, var(--ada-gold) 100%);
         }
 
         .menu-tab span {
@@ -506,9 +579,9 @@
 
         .menu-item:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow-luxury);
-            border-color: rgba(176, 141, 87, 0.4);
-            background: rgba(10, 22, 48, 0.5);
+            box-shadow: var(--shadow-luxury), 0 0 30px rgba(212, 175, 55, 0.15);
+            border-color: var(--ada-gold);
+            background: linear-gradient(135deg, rgba(10, 22, 48, 0.5) 0%, rgba(212, 175, 55, 0.05) 100%);
         }
 
         .menu-item-header {
@@ -566,9 +639,10 @@
 
         .gallery-filter:hover,
         .gallery-filter.active {
-            background: var(--ada-brass);
+            background: linear-gradient(135deg, var(--ada-brass) 0%, var(--ada-gold) 100%);
             color: var(--ada-deep-navy);
-            border-color: var(--ada-brass);
+            border-color: var(--ada-gold);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
         }
 
         .gallery-grid {
@@ -740,7 +814,8 @@
 
         .contact-card:hover {
             transform: translateX(10px);
-            border-color: var(--ada-brass);
+            border-color: var(--ada-gold);
+            background: linear-gradient(135deg, rgba(10, 22, 48, 0.3) 0%, rgba(212, 175, 55, 0.05) 100%);
         }
 
         .contact-card h4 {
@@ -815,8 +890,9 @@
 
         .hours-card:hover {
             transform: translateY(-5px);
-            border-color: var(--ada-brass);
-            box-shadow: var(--shadow-soft);
+            border-color: var(--ada-gold);
+            box-shadow: var(--shadow-soft), 0 0 20px rgba(212, 175, 55, 0.1);
+            background: linear-gradient(135deg, rgba(10, 22, 48, 0.3) 0%, rgba(212, 175, 55, 0.03) 100%);
         }
 
         .hours-card h5 {
@@ -898,7 +974,7 @@
             top: 0;
             bottom: 0;
             width: 1px;
-            background: linear-gradient(180deg, transparent 0%, var(--ada-brass) 50%, transparent 100%);
+            background: linear-gradient(180deg, transparent 0%, var(--ada-gold) 50%, transparent 100%);
         }
 
         .timeline-item {
@@ -935,10 +1011,11 @@
             transform: translate(-50%, -50%);
             width: 20px;
             height: 20px;
-            background: var(--ada-brass);
+            background: linear-gradient(135deg, var(--ada-brass) 0%, var(--ada-gold) 100%);
             border: 3px solid var(--ada-deep-navy);
             border-radius: 50%;
             z-index: 1;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
         }
 
         .timeline-content h4 {
@@ -1009,9 +1086,10 @@
         }
 
         .social-link:hover {
-            background: var(--ada-brass);
+            background: linear-gradient(135deg, var(--ada-brass) 0%, var(--ada-gold) 100%);
             color: var(--ada-deep-navy);
-            transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
         }
 
         .footer-column h4 {
@@ -1071,6 +1149,20 @@
     </style>
 </head>
 <body>
+    <!-- Luxury Particles -->
+    <div class="luxury-particles">
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+    </div>
+
     <!-- Glassy Header with Navigation -->
     <header class="header" id="header">
         <nav class="nav">
@@ -1090,7 +1182,7 @@
     <section class="hero" id="home">
         <div class="hero-bg"></div>
         <div class="hero-content">
-            <h1>Lakefront dining in the heart of Uzungöl</h1>
+            <h1 style="text-shadow: 0 2px 20px rgba(212, 175, 55, 0.3);">Lakefront dining in the heart of Uzungöl</h1>
             <p class="subtitle">Where Black Sea traditions meet contemporary elegance on the water's edge</p>
             <div class="buttons">
                 <a href="#reservations" class="btn btn-primary">
@@ -1311,18 +1403,10 @@
 
             <div class="reservation-container">
                 <div class="reservation-form">
-                    <form>
+                    <form id="reservationForm">
                         <div class="form-group">
                             <label for="name">Full Name</label>
                             <input type="text" id="name" placeholder="Your name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" placeholder="your@email.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone</label>
-                            <input type="tel" id="phone" placeholder="+90 555 123 4567" required>
                         </div>
                         <div class="form-group">
                             <label for="date">Date</label>
@@ -1354,8 +1438,8 @@
                             <label for="message">Special Requests</label>
                             <textarea id="message" rows="3" placeholder="Any special requests or dietary requirements"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">
-                            <span>Reserve Table</span>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; background: linear-gradient(135deg, var(--ada-brass) 0%, var(--ada-gold) 100%); border-color: var(--ada-gold);">
+                            <span>Reserve via WhatsApp</span>
                         </button>
                     </form>
                 </div>
@@ -1363,9 +1447,9 @@
                 <div class="contact-info">
                     <div class="contact-card">
                         <h4>Direct Reservations</h4>
-                        <p>📞 +90 462 656 62 55</p>
-                        <p>📧 reserve@adarestaurant.com</p>
-                        <p>💬 WhatsApp: +90 555 123 4567</p>
+                        <p>💬 WhatsApp: +90 545 417 43 44</p>
+                        <p>📞 Direct: +90 462 656 62 55</p>
+                        <p>✨ Instant confirmation available</p>
                     </div>
                     <div class="contact-card">
                         <h4>Group Bookings</h4>
@@ -1513,7 +1597,7 @@
                 <div class="footer-column">
                     <h4>Contact</h4>
                     <ul>
-                        <li><a href="tel:+904626566255">+90 462 656 62 55</a></li>
+                        <li><a href="https://wa.me/905454174344">+90 545 417 43 44</a></li>
                         <li><a href="mailto:info@adarestaurant.com">info@adarestaurant.com</a></li>
                         <li><a href="#">Uzungöl, Trabzon</a></li>
                     </ul>
@@ -1618,10 +1702,41 @@
             });
         });
 
-        // Form submission handler
-        document.querySelector('.reservation-form form').addEventListener('submit', (e) => {
+        // WhatsApp reservation handler
+        document.getElementById('reservationForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('Thank you for your reservation! We will contact you shortly to confirm.');
+
+            // Get form values
+            const name = document.getElementById('name').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const guests = document.getElementById('guests').value;
+            const message = document.getElementById('message').value;
+
+            // Format date for message
+            const formattedDate = new Date(date).toLocaleDateString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            // Create WhatsApp message
+            const whatsappMessage = `🌟 *Reservation Request - Ada Restaurant*\n\n` +
+                `👤 *Name:* ${name}\n` +
+                `📅 *Date:* ${formattedDate}\n` +
+                `🕐 *Time:* ${time}\n` +
+                `👥 *Guests:* ${guests}\n` +
+                `${message ? `💬 *Special Requests:* ${message}` : ''}`;
+
+            // Encode message for URL
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+
+            // WhatsApp number (remove spaces and special chars)
+            const whatsappNumber = '905454174344';
+
+            // Open WhatsApp with pre-filled message
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
         });
 
         // Intersection Observer for animations
