@@ -1,0 +1,94 @@
+{
+  "navigation": {
+    "home": "Ana Sayfa",
+    "menu": "Menü",
+    "gallery": "Galeri",
+    "reservations": "Rezervasyon",
+    "location": "Konum & Saatler",
+    "about": "Hakkımızda",
+    "instagram": "Instagram"
+  },
+  "home": {
+    "hero": {
+      "heading": "Uzungöl'ün kalbinde göl manzaralı yemek",
+      "subheading": "Karadeniz'in yerel lezzetleri, suyun kenarında zamansız misafirperverlikle buluşuyor.",
+      "primaryCTA": "Rezervasyon Yap",
+      "secondaryCTA": "Menüyü Gör"
+    },
+    "highlights": {
+      "title1": "Kıyıdan Izgaraya",
+      "body1": "Özenle hazırlanan taze yerel ürünler ve bölgesel spesiyaliteler.",
+      "title2": "Manzaralı Teras",
+      "body2": "Göl ve çam ormanlarına bakan açık hava ortamı.",
+      "title3": "Aileler ve Arkadaşlar İçin",
+      "body3": "Gruplar ve kutlamalar için geniş oturma seçenekleri."
+    },
+    "signature": {
+      "title": "İmza Yemeklerimiz",
+      "viewAll": "Tüm Menüyü Gör"
+    }
+  },
+  "menu": {
+    "intro": "Menümüz, Karadeniz'in en iyilerini sevilen Türk ve seçkin Orta Doğu yemekleriyle harmanlıyor. Mevsime göre değişiklik gösterebilir.",
+    "sections": {
+      "blackSea": "Karadeniz Favorileri",
+      "grills": "Izgaralar & Ana Yemekler",
+      "middleEastern": "Orta Doğu Seçkisi",
+      "sharing": "Paylaşımlık",
+      "desserts": "Tatlılar & Çay"
+    },
+    "allergens": "Lütfen alerjilerinizi ekibimize bildirin. Elimizden geleni yapacağız."
+  },
+  "about": {
+    "heading": "2009'dan beri Uzungöl'de köklü",
+    "body": "Ada Restaurant, ahşap terasların temiz dağ havasıyla buluştuğu gölün yanında büyüdü. Ekibimiz Türkiye'den ve dünyadan gelen konukları samimi bir misafirperverlik anlayışı ve mevsimsel, bölgeye özgü menüyle karşılıyor.",
+    "values": {
+      "title": "Değerlerimiz",
+      "value1": "Taze, Yerel Malzemeler",
+      "value2": "Otantik Bölgesel Tarifler",
+      "value3": "Sıcak, Samimi Misafirperverlik"
+    }
+  },
+  "reservations": {
+    "heading": "Rezervasyon & İletişim",
+    "body": "Aynı gün rezervasyon için lütfen bizi arayın veya WhatsApp'tan mesaj atın. Gruplar ve özel günler için tercih ettiğiniz tarih, saat ve kişi sayısını paylaşın.",
+    "call": "Ara",
+    "whatsapp": "WhatsApp'tan Mesaj At",
+    "policies": {
+      "title": "Rezervasyon Politikası",
+      "groupBookings": "8+ kişilik gruplar için onay mesajı gereklidir.",
+      "noShow": "Masalar rezervasyon saatinden 15 dakika sonrasına kadar tutulur.",
+      "specialRequests": "Oturma tercihleri veya kutlamalar hakkında bize bildirin."
+    }
+  },
+  "location": {
+    "heading": "Konum & Saatler",
+    "body": "Yenimahalle, Fevzi Çakmak Caddesi No:15/A, Uzungöl — göl kenarı gezinti yoluna kısa bir yürüyüş mesafesinde. Otopark ve mescit mevcudiyeti teyit edilecektir.",
+    "hours": {
+      "title": "Açılış Saatleri",
+      "daily": "Her gün",
+      "seasonal": "Mevsimsel saatler değişebilir"
+    }
+  },
+  "gallery": {
+    "filters": {
+      "all": "Tümü",
+      "terrace": "Teras",
+      "interior": "İç Mekan",
+      "dishes": "Yemekler",
+      "team": "Ekip"
+    }
+  },
+  "footer": {
+    "address": "Yenimahalle, Fevzi Çakmak Cd. No:15/A, Uzungöl, Çaykara/Trabzon",
+    "phone": "Ara",
+    "whatsapp": "WhatsApp",
+    "rights": "© Ada Restaurant. Tüm hakları saklıdır."
+  },
+  "common": {
+    "loading": "Yükleniyor...",
+    "close": "Kapat",
+    "viewMore": "Daha Fazla Gör",
+    "language": "Dil"
+  }
+}

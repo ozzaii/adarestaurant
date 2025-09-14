@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ada Restaurant - Uzungöl</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --ada-ivory: #F7F4EF;
+            --ada-deep-navy: #0A1630;
+            --ada-brass: #B08D57;
+            --ada-sea-mist: #BFD3D6;
+            --ada-pine: #1E3A34;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--ada-deep-navy);
+            color: var(--ada-ivory);
+            line-height: 1.6;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 22, 48, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--ada-brass);
+            z-index: 50;
+            padding: 1.25rem 2rem;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            color: var(--ada-brass);
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--ada-ivory);
+            text-decoration: none;
+            font-size: 0.875rem;
+            letter-spacing: 0.025em;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--ada-brass);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--ada-brass);
+            transition: width 0.2s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--ada-deep-navy) 0%, var(--ada-pine) 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, transparent 40%, rgba(10, 22, 48, 0.4) 100%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+            animation: fadeUp 0.8s ease-out;
+        }
+
+        .hero p {
+            font-size: clamp(1.125rem, 2vw, 1.375rem);
+            color: rgba(247, 244, 239, 0.9);
+            margin-bottom: 2.5rem;
+            animation: fadeUp 0.8s ease-out 0.1s both;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeUp 0.8s ease-out 0.2s both;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            border: 1px solid var(--ada-brass);
+            color: var(--ada-ivory);
+            background: transparent;
+        }
+
+        .btn-primary:hover {
+            background: var(--ada-brass);
+            color: var(--ada-deep-navy);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--ada-sea-mist);
+            color: var(--ada-ivory);
+            background: transparent;
+        }
+
+        .btn-secondary:hover {
+            background: var(--ada-sea-mist);
+            color: var(--ada-deep-navy);
+            transform: translateY(-2px);
+        }
+
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .highlight {
+            text-align: center;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .highlight-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            color: var(--ada-brass);
+        }
+
+        .highlight h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--ada-ivory);
+        }
+
+        .highlight p {
+            color: rgba(247, 244, 239, 0.8);
+            line-height: 1.6;
+        }
+
+        .menu-preview {
+            background: rgba(30, 58, 52, 0.2);
+            padding: 5rem 2rem;
+            margin-top: 5rem;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .menu-item {
+            padding: 1.5rem;
+            border: 1px solid rgba(176, 141, 87, 0.2);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .menu-item:hover {
+            border-color: var(--ada-brass);
+            transform: translateY(-4px);
+        }
+
+        .menu-item h4 {
+            color: var(--ada-brass);
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item p {
+            color: rgba(247, 244, 239, 0.7);
+            font-size: 0.875rem;
+        }
+
+        .cta-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 22, 48, 0.95);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(176, 141, 87, 0.2);
+            padding: 1rem;
+            display: none;
+            z-index: 40;
+        }
+
+        .cta-bar-content {
+            display: flex;
+            justify-content: space-around;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .cta-bar a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--ada-ivory);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.2s;
+        }
+
+        .cta-bar a:hover {
+            color: var(--ada-brass);
+        }
+
+        h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            text-align: center;
+            color: var(--ada-brass);
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: rgba(247, 244, 239, 0.8);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .cta-bar { display: block; }
+            .hero { padding-top: 80px; padding-bottom: 80px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="logo">Ada</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#reservations">Reservations</a></li>
+                <li><a href="#location">Location</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Lakefront dining in the heart of Uzungöl</h1>
+            <p>Local Black Sea flavors meet timeless hospitality on the water's edge.</p>
+            <div class="buttons">
+                <a href="tel:+904626566255" class="btn btn-primary">Reserve a Table</a>
+                <a href="#menu" class="btn btn-secondary">View Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="highlights">
+            <div class="highlight">
+                <div class="highlight-icon">
+                    <svg fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <h3>From Shore to Grill</h3>
+                <p>Fresh local produce and regional specialties prepared with care.</p>
+            </div>
+            <div class="highlight">
+                <div class="highlight-icon">
+                    <svg fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                </div>
+                <h3>Terrace with a View</h3>
+                <p>An open‑air setting overlooking the lake and pine forests.</p>
+            </div>
+            <div class="highlight">
+                <div class="highlight-icon">
+                    <svg fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                </div>
+                <h3>For Families & Friends</h3>
+                <p>Spacious seating with options for groups and celebrations.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu-preview">
+        <h2>Signature Dishes</h2>
+        <p class="subtitle">Experience the best of Black Sea cuisine with our carefully crafted menu</p>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <h4>Kuymak (Muhlama)</h4>
+                <p>Traditional Black Sea cheese fondue with cornmeal</p>
+            </div>
+            <div class="menu-item">
+                <h4>Grilled Local Trout</h4>
+                <p>Fresh from Uzungöl waters, grilled to perfection</p>
+            </div>
+            <div class="menu-item">
+                <h4>Kabsa</h4>
+                <p>Aromatic Middle Eastern rice with tender lamb</p>
+            </div>
+            <div class="menu-item">
+                <h4>Mixed Grill Platter</h4>
+                <p>Selection of premium meats, perfect for sharing</p>
+            </div>
+            <div class="menu-item">
+                <h4>Künefe</h4>
+                <p>Sweet cheese pastry with crispy layers and syrup</p>
+            </div>
+            <div class="menu-item">
+                <h4>Turkish Tea Service</h4>
+                <p>Traditional tea served in tulip glasses</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="cta-bar">
+        <div class="cta-bar-content">
+            <a href="tel:+904626566255">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                Call Now
+            </a>
+            <a href="https://wa.me/905323948166" target="_blank">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.67.149-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 16.292c-.379.937-1.877 1.719-2.584 1.833-.187.03-.42.054-.687.054-.562 0-1.427-.116-2.572-.506-3.146-1.07-5.522-4.632-5.69-4.841-.164-.207-1.349-1.76-1.349-3.375 0-1.614.823-2.402 1.139-2.737.279-.294.766-.442 1.225-.442.148 0 .281.007.402.013.35.014.525.033.755.586.29.693.988 2.375 1.073 2.547.086.173.144.374.03.604-.114.233-.172.375-.343.576-.172.202-.361.45-.516.604-.143.144-.296.301-.124.587.172.288.764 1.26 1.64 2.041 1.128 1.006 2.034 1.328 2.351 1.473.315.144.502.115.688-.086.188-.202.804-.937.018-1.166-.316-.23-1.88-.93-2.176-1.034z"/>
+                </svg>
+                WhatsApp
+            </a>
+        </div>
+    </div>
+</body>
+</html>

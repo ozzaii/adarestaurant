@@ -1,36 +1,118 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ada Restaurant - Ultra-Luxe Multilingual Website
 
-## Getting Started
+Premium restaurant website for Ada Restaurant in Uzungöl, featuring an editorial design with Gulf-audience appeal.
 
-First, run the development server:
+## Features
+
+✓ **Multilingual** - EN/TR/AR with full RTL support
+✓ **Ultra-luxe design** - Opulent night theme with brass accents
+✓ **Premium animations** - Framer Motion with magnetic hovers
+✓ **Responsive** - Mobile-first with sticky CTA bar
+✓ **Performance optimized** - SSG/ISR, lazy loading, priority hints
+✓ **Accessible** - WCAG AA compliant
+✓ **SEO ready** - JSON-LD, meta tags, Open Graph
+
+## Tech Stack
+
+- Next.js 14 (App Router)
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- next-intl (i18n)
+
+## Setup
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+ada-restaurant/
+├── app/
+│   ├── [locale]/         # Localized routes
+│   │   ├── page.tsx       # Home
+│   │   ├── menu/          # Menu with tabs
+│   │   ├── gallery/       # Photo gallery
+│   │   ├── reservations/  # Contact/booking
+│   │   ├── location/      # Map & hours
+│   │   └── about/         # About page
+│   ├── globals.css        # Design tokens
+│   └── layout.tsx         # Root layout
+├── components/            # Reusable components
+├── messages/              # i18n translations
+└── public/               # Static assets
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Design System
 
-## Learn More
+### Color Tokens
+- `--ada-ivory`: #F7F4EF (light canvas)
+- `--ada-deep-navy`: #0A1630 (dark canvas, primary)
+- `--ada-brass`: #B08D57 (accents, hairlines)
+- `--ada-sea-mist`: #BFD3D6 (subtle backgrounds)
+- `--ada-pine`: #1E3A34 (sections)
 
-To learn more about Next.js, take a look at the following resources:
+### Typography
+- Display: Playfair Display
+- Body: Inter
+- Arabic: IBM Plex Sans Arabic
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Motion
+- Fast: 120ms
+- Base: 180ms
+- Rich: 240ms
+- Easing: cubic-bezier(0.2, 0, 0, 1)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Adding Content
 
-## Deploy on Vercel
+### Menu Items
+Edit `/app/[locale]/menu/page.tsx` - Update the `menuSections` array
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Gallery Images
+Edit `/app/[locale]/gallery/page.tsx` - Add to the `images` array
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Translations
+Edit `/messages/{locale}.json` files
+
+## Deployment
+
+### Vercel (Recommended)
+```bash
+vercel
+```
+
+### Docker
+```bash
+docker build -t ada-restaurant .
+docker run -p 3000:3000 ada-restaurant
+```
+
+## Performance Targets
+
+- Lighthouse Performance: ≥95
+- Lighthouse Accessibility: ≥95
+- Lighthouse Best Practices: ≥95
+- Lighthouse SEO: ≥95
+
+## Browser Support
+
+- Chrome 90+
+- Safari 14+
+- Firefox 88+
+- Edge 90+
+
+## License
+
+© Ada Restaurant. All rights reserved.

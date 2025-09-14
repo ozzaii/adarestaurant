@@ -1,0 +1,94 @@
+{
+  "navigation": {
+    "home": "Home",
+    "menu": "Menu",
+    "gallery": "Gallery",
+    "reservations": "Reservations",
+    "location": "Location & Hours",
+    "about": "About",
+    "instagram": "Instagram"
+  },
+  "home": {
+    "hero": {
+      "heading": "Lakefront dining in the heart of Uzungöl",
+      "subheading": "Local Black Sea flavors meet timeless hospitality on the water's edge.",
+      "primaryCTA": "Reserve a Table",
+      "secondaryCTA": "View Menu"
+    },
+    "highlights": {
+      "title1": "From Shore to Grill",
+      "body1": "Fresh local produce and regional specialties prepared with care.",
+      "title2": "Terrace with a View",
+      "body2": "An open‑air setting overlooking the lake and pine forests.",
+      "title3": "For Families & Friends",
+      "body3": "Spacious seating with options for groups and celebrations."
+    },
+    "signature": {
+      "title": "Signature Dishes",
+      "viewAll": "View Full Menu"
+    }
+  },
+  "menu": {
+    "intro": "Our menu blends the best of the Black Sea with beloved Turkish and select Middle Eastern dishes. Availability may change with the season.",
+    "sections": {
+      "blackSea": "Black Sea Favorites",
+      "grills": "Grills & Mains",
+      "middleEastern": "Middle Eastern Selection",
+      "sharing": "For Sharing",
+      "desserts": "Desserts & Tea"
+    },
+    "allergens": "Please inform our team of any allergies. We will do our best to accommodate."
+  },
+  "about": {
+    "heading": "Rooted in Uzungöl since 2009",
+    "body": "Ada Restaurant grew beside the lake, where wooden decks meet fresh mountain air. Our team welcomes guests from Türkiye and around the world with a sincere approach to hospitality and a seasonal, region‑driven menu.",
+    "values": {
+      "title": "Our Values",
+      "value1": "Fresh, Local Ingredients",
+      "value2": "Authentic Regional Recipes",
+      "value3": "Warm, Sincere Hospitality"
+    }
+  },
+  "reservations": {
+    "heading": "Reservations & Contact",
+    "body": "For same‑day bookings, please call or message us on WhatsApp. For groups and special occasions, share your preferred date, time, and party size.",
+    "call": "Call",
+    "whatsapp": "Message on WhatsApp",
+    "policies": {
+      "title": "Reservation Policies",
+      "groupBookings": "For 8+ guests, a confirmation message is required.",
+      "noShow": "Tables are held for 15 minutes past reservation time.",
+      "specialRequests": "Let us know about seating preferences or celebrations."
+    }
+  },
+  "location": {
+    "heading": "Location & Hours",
+    "body": "Yenimahalle, Fevzi Çakmak Caddesi No:15/A, Uzungöl — a short walk from the lakeside promenade. Parking and prayer room availability to be confirmed.",
+    "hours": {
+      "title": "Opening Hours",
+      "daily": "Daily",
+      "seasonal": "Seasonal hours may vary"
+    }
+  },
+  "gallery": {
+    "filters": {
+      "all": "All",
+      "terrace": "Terrace",
+      "interior": "Interior",
+      "dishes": "Dishes",
+      "team": "Team"
+    }
+  },
+  "footer": {
+    "address": "Yenimahalle, Fevzi Çakmak Cd. No:15/A, Uzungöl, Çaykara/Trabzon",
+    "phone": "Call",
+    "whatsapp": "WhatsApp",
+    "rights": "© Ada Restaurant. All rights reserved."
+  },
+  "common": {
+    "loading": "Loading...",
+    "close": "Close",
+    "viewMore": "View More",
+    "language": "Language"
+  }
+}
