@@ -269,13 +269,19 @@
         .hero-bg {
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(10, 22, 48, 0.3) 0%, rgba(10, 22, 48, 0.7) 100%),
-                        url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0icCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjQwIiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMTc2LCAxNDEsIDg3LCAwLjA1KSIgc3Ryb2tlLXdpZHRoPSIwLjUiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcCkiLz48L3N2Zz4=');
-            background-size: cover, 200px 200px;
+            background: linear-gradient(180deg, rgba(10, 22, 48, 0.4) 0%, rgba(10, 22, 48, 0.8) 100%),
+                        url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1920&q=80');
+            background-size: cover;
             background-position: center;
-            opacity: 0.3;
+            opacity: 0.9;
             transform: scale(1.1);
             transition: transform 10s ease-out;
+        }
+
+        /* Alternate hero images for different sections */
+        .hero-bg.lake-view {
+            background-image: linear-gradient(180deg, rgba(10, 22, 48, 0.4) 0%, rgba(10, 22, 48, 0.8) 100%),
+                            url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1920&q=80');
         }
 
         .hero-content {
@@ -660,6 +666,8 @@
             transition: all 0.4s var(--cubic-smooth);
             background: rgba(10, 22, 48, 0.3);
             aspect-ratio: 1;
+            background-size: cover;
+            background-position: center;
         }
 
         .gallery-item::before {
@@ -944,12 +952,15 @@
             position: relative;
             border-radius: 20px;
             overflow: hidden;
-            background: linear-gradient(135deg, rgba(10, 22, 48, 0.3) 0%, rgba(30, 58, 52, 0.3) 100%);
+            background: linear-gradient(135deg, rgba(10, 22, 48, 0.3) 0%, rgba(30, 58, 52, 0.3) 100%),
+                        url('https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?w=800&q=80');
+            background-size: cover;
+            background-position: center;
             aspect-ratio: 4/3;
         }
 
         .about-image::before {
-            content: 'Est. 2018';
+            content: 'Est. 2009';
             position: absolute;
             top: 2rem;
             right: 2rem;
@@ -1355,40 +1366,40 @@
             </div>
 
             <div class="gallery-grid">
-                <div class="gallery-item" data-category="interior">
+                <div class="gallery-item" data-category="interior" style="background-image: linear-gradient(180deg, transparent 50%, rgba(10, 22, 48, 0.9) 100%), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80'); background-size: cover; background-position: center;">
                     <div class="gallery-item-content">
                         <h5>Elegant Dining Hall</h5>
-                        <p>Our main dining area with panoramic views</p>
+                        <p>Our main dining area with panoramic lake views</p>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="food">
+                <div class="gallery-item" data-category="food" style="background-image: linear-gradient(180deg, transparent 50%, rgba(10, 22, 48, 0.9) 100%), url('https://images.unsplash.com/photo-1580476262798-bddd9f4b7369?w=800&q=80'); background-size: cover; background-position: center;">
                     <div class="gallery-item-content">
                         <h5>Signature Grilled Trout</h5>
                         <p>Fresh from Uzungöl waters</p>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="view">
+                <div class="gallery-item" data-category="view" style="background-image: linear-gradient(180deg, transparent 50%, rgba(10, 22, 48, 0.9) 100%), url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=800&q=80'); background-size: cover; background-position: center;">
                     <div class="gallery-item-content">
-                        <h5>Sunset Over the Lake</h5>
-                        <p>Golden hour at Ada Restaurant</p>
+                        <h5>Lakeside Terrace</h5>
+                        <p>Breathtaking views of Uzungöl Lake</p>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="interior">
+                <div class="gallery-item" data-category="interior" style="background-image: linear-gradient(180deg, transparent 50%, rgba(10, 22, 48, 0.9) 100%), url('https://images.unsplash.com/photo-1552566626-52f8b828add9?w=800&q=80'); background-size: cover; background-position: center;">
                     <div class="gallery-item-content">
                         <h5>Private Dining Room</h5>
                         <p>Intimate space for special occasions</p>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="food">
+                <div class="gallery-item" data-category="food" style="background-image: linear-gradient(180deg, transparent 50%, rgba(10, 22, 48, 0.9) 100%), url('https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800&q=80'); background-size: cover; background-position: center;">
                     <div class="gallery-item-content">
                         <h5>Traditional Künefe</h5>
                         <p>Handcrafted dessert perfection</p>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="events">
+                <div class="gallery-item" data-category="events" style="background-image: linear-gradient(180deg, transparent 50%, rgba(10, 22, 48, 0.9) 100%), url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80'); background-size: cover; background-position: center;">
                     <div class="gallery-item-content">
-                        <h5>Wedding Reception</h5>
-                        <p>Celebrating love by the lake</p>
+                        <h5>Special Events</h5>
+                        <p>Celebrating moments by the lake</p>
                     </div>
                 </div>
             </div>
@@ -1474,7 +1485,7 @@
             <h2 class="section-title">Location & Hours</h2>
             <p class="section-subtitle">Find us by the serene waters of Uzungöl</p>
 
-            <div class="map-container">
+            <div class="map-container" style="background-image: linear-gradient(135deg, rgba(10, 22, 48, 0.7) 0%, rgba(30, 58, 52, 0.7) 100%), url('https://images.unsplash.com/photo-1524634126442-357e0eac3c14?w=1200&q=80'); background-size: cover; background-position: center;">
                 <div class="map-overlay">
                     <h4>Ada Restaurant</h4>
                     <p>📍 Uzungöl, Çaykara, Trabzon</p>
@@ -1518,7 +1529,7 @@
             <div class="about-content">
                 <div class="about-text">
                     <h3>Tradition Meets Excellence</h3>
-                    <p>Since 2018, Ada Restaurant has been a beacon of culinary excellence in Uzungöl, where the pristine waters meet the majestic mountains of the Black Sea region.</p>
+                    <p>Since 2009, Ada Restaurant has been a beacon of culinary excellence in Uzungöl, where the pristine waters meet the majestic mountains of the Black Sea region.</p>
                     <p>Our journey began with a simple vision: to create a dining destination that honors the rich culinary heritage of the Black Sea while embracing contemporary elegance and international standards of service.</p>
                     <p>Today, we proudly serve guests from around the world, offering them not just a meal, but an unforgettable experience that captures the essence of Turkish hospitality.</p>
                 </div>
@@ -1528,7 +1539,7 @@
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <h4>2018 - The Beginning</h4>
+                        <h4>2009 - The Beginning</h4>
                         <p>Ada Restaurant opens its doors, introducing a new standard of lakeside dining to Uzungöl</p>
                     </div>
                     <div class="timeline-dot"></div>
